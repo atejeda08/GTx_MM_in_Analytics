@@ -1,0 +1,6 @@
+
+
+setwd("C:/Users/jtejeda/OneDrive - Clarios/Documents/R_projects/hw3-SP22")
+
+uscrime <- read.table("uscrime.txt", stringsAsFactors = FALSE, header = T)
+head(uscrime)
