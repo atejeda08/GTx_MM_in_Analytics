@@ -1,0 +1,49 @@
+
+setwd("C:/Users/jtejeda/OneDrive - Clarios/Documents/R_projects/hw3-SP22")
+
+uscrime <- read.table("uscrime.txt", stringsAsFactors = FALSE, header = T)
+head(uscrime)
+
+summary(uscrime$Crime)
+
+library(outliers)
+
+#plot in a variety of ways for visual confirmation of predicted outliers
+plot(uscrime$Crime)
+plot(uscrime[,16],type ="b")
+hist(uscrime[,16],type ="b")
+qqnorm(uscrime$Crime)
+boxplot(uscrime$Crime)
+
+#grubbs test for outliers
+grubbs.test(uscrime$Crime, type = 10)
+
+#remove first outlier found and plot again before testing dataset again
+crime1<- uscrime[-26,16]
+plot(crime1)
+boxplot(crime1)
+
+#grubbs test #2 and remove second outlier found
+grubbs.test(crime1, type = 10)
+crime2<- crime1[-4]
+plot(crime2)
+
+#grubbs test #3
+grubbs.test(crime2, type = 10)
+hist(crime2)
+boxplot(crime2)
+
+
+
+
+#cool plot 
+#g = uscrime[,16 ]
+#m <- mean(g)
+#std <- sqrt(var(g))
+
+#hist(uscrime[,16],density=10, breaks = 12, prob = TRUE, xlab = "x-variable", main = "normal curve over histogram")
+#curve(dnorm(x, mean=m, sd=std)) 
+#    col= "darkblue", lwd = 2, add= TRUE, yaxt ="n"
+
+
+
