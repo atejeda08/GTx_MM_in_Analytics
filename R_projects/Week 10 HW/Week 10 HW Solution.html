@@ -3,7 +3,7 @@
 <head><meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>HW 9 Solution 1-of-2</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>HW 14.1 Solution</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 
 
 
@@ -14579,7 +14579,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="Armando-Tejeda">Armando Tejeda<a class="anchor-link" href="#Armando-Tejeda">&#182;</a></h1><h3 id="HW-9-Solution">HW 9 Solution<a class="anchor-link" href="#HW-9-Solution">&#182;</a></h3><h3 id="10/26/22">10/26/22<a class="anchor-link" href="#10/26/22">&#182;</a></h3>
+<h2 id="Armando-Tejeda">Armando Tejeda<a class="anchor-link" href="#Armando-Tejeda">&#182;</a></h2><h3 id="Homework-Week-10">Homework Week 10<a class="anchor-link" href="#Homework-Week-10">&#182;</a></h3><h3 id="11/2/22">11/2/22<a class="anchor-link" href="#11/2/22">&#182;</a></h3>
 </div>
 </div>
 </div>
@@ -14590,31 +14590,48 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Question 12.1</p>
-<p>Describe a situation or problem from your job, everyday life, current events, etc., for which a design of experiments approach would be appropriate.</p>
+<p>Question 14.1</p>
+<p>The breast cancer data set breast-cancer-wisconsin.data.txt from <a href="http://archive.ics.uci.edu/ml/machine-learning-databases/breast-cancer-wisconsin/">http://archive.ics.uci.edu/ml/machine-learning-databases/breast-cancer-wisconsin/</a>  (description at <a href="http://archive.ics.uci.edu/ml/datasets/Breast+Cancer+Wisconsin+%28Original%29">http://archive.ics.uci.edu/ml/datasets/Breast+Cancer+Wisconsin+%28Original%29</a> ) has missing values.</p>
+<ol>
+<li>Use the mean/mode imputation method to impute values for the missing data.</li>
+<li>Use regression to impute values for the missing data.</li>
+<li>Use regression with perturbation to impute values for the missing data.</li>
+<li>(Optional) Compare the results and quality of classification models (e.g., SVM, KNN) build using 
+(1) the data sets from questions 1,2,3; 
+(2) the data that remains after data points with missing values are removed; and 
+(3) the data set when a binary variable is introduced to indicate missing values.</li>
+</ol>
 <hr>
 <p>Solution:</p>
-<p>Design for experiment would be very useful for, say, a fast food restaurant in a well traveled area. The manager could use DOE to come up with a series of "what-if" scenarios for the restaurant to maximize customer satisfaction and not miss any business due to long wait lines or short lunch breaks.</p>
 
 </div>
 </div>
 </div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Question 12.2</p>
-<p>To determine the value of 10 different yes/no features to the market value of a house (large yard, solar roof, etc.), a real estate agent plans to survey 50 potential buyers, showing a fictitious house with different combinations of features.  To reduce the survey size, the agent wants to show just 16 fictitious houses. Use R’s FrF2 function (in the FrF2 package) to find a fractional factorial design for this experiment: what set of features should each of the 16 fictitious houses have?  Note: the output of FrF2 is “1” (include) or  “-1” (don’t include) for each feature.</p>
-<hr>
-<p>Solution:</p>
-<p>Below is the implementation of the fractional factorial design for 16 open houses based on 10 features. Output below shows which house should have which features to show to prospective house buyers.</p>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-r"><pre><span></span><span class="c1"># load packages I may need</span>
 
+<span class="nf">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">caret</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">modelr</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">ggthemes</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">corrplot</span><span class="p">)</span>
+
+<span class="nf">library</span><span class="p">(</span><span class="n">mice</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">VIM</span><span class="p">)</span>
+</pre></div>
+
+     </div>
 </div>
 </div>
 </div>
+
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -14623,20 +14640,846 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-r"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span>
-<span class="nf">library</span><span class="p">(</span><span class="n">FrF2</span><span class="p">)</span>
+<div class=" highlight hl-r"><pre><span></span><span class="nf">set.seed</span><span class="p">(</span><span class="m">1</span><span class="p">)</span>
 
-<span class="p">(</span><span class="n">houses</span> <span class="o">&lt;-</span> <span class="nf">FrF2</span><span class="p">(</span>
-  <span class="m">16</span><span class="p">,</span> <span class="m">10</span><span class="p">,</span> 
-  <span class="n">factor.names</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span>
-    <span class="s">&#39;Large Yard&#39;</span><span class="p">,</span> <span class="s">&#39;Pool&#39;</span><span class="p">,</span> <span class="s">&#39;Solar Roof&#39;</span><span class="p">,</span> <span class="s">&#39;Long Driveway&#39;</span><span class="p">,</span> <span class="s">&#39;Multi Car Garage&#39;</span><span class="p">,</span>
-    <span class="s">&#39;Walk-In Closet&#39;</span><span class="p">,</span> <span class="s">&#39;Man Cave&#39;</span><span class="p">,</span> <span class="s">&#39;Full Bar&#39;</span><span class="p">,</span> <span class="s">&#39;Golf Access&#39;</span><span class="p">,</span> <span class="s">&#39;New Home&#39;</span>
-    <span class="p">),</span>
-  <span class="n">default.levels</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#39;Yes&#39;</span><span class="p">,</span> <span class="s">&#39;No&#39;</span><span class="p">)</span>
-  <span class="p">)</span> <span class="o">%&gt;%</span> 
-  <span class="nf">as_tibble</span><span class="p">()</span> <span class="o">%&gt;%</span> 
-  <span class="nf">rownames_to_column</span><span class="p">(</span><span class="s">&#39;House&#39;</span><span class="p">)</span>
- <span class="p">)</span>
+<span class="c1"># read in the cancer data</span>
+<span class="n">cancer_df</span> <span class="o">=</span> <span class="nf">read_delim</span><span class="p">(</span><span class="s">&#39;C:/Users/ateje/OneDrive/Desktop/VS Code Projects/GTx_MM_in_Analytics/R_projects/Week 10 HW/breast-cancer-wisconsin.data.txt&#39;</span><span class="p">,</span> <span class="n">delim</span> <span class="o">=</span> <span class="s">&#39;,&#39;</span><span class="p">,</span>
+                       <span class="n">col_names</span> <span class="o">=</span> <span class="bp">F</span><span class="p">,</span> <span class="n">na</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#39;?&#39;</span><span class="p">))</span> <span class="o">%&gt;%</span> 
+        <span class="nf">as.data.frame</span><span class="p">()</span> <span class="o">%&gt;%</span> 
+        <span class="nf">mutate</span><span class="p">(</span><span class="n">X11</span> <span class="o">=</span> <span class="nf">ifelse</span><span class="p">(</span><span class="n">X11</span> <span class="o">==</span> <span class="m">2</span><span class="p">,</span> <span class="s">&#39;Benign&#39;</span><span class="p">,</span> <span class="s">&#39;Malignant&#39;</span><span class="p">))</span>
+
+
+<span class="c1"># using mice to see missing data - including complete cases</span>
+<span class="nf">md.pattern</span><span class="p">(</span><span class="n">cancer_df</span><span class="p">[,</span><span class="m">-11</span><span class="p">])</span>
+
+<span class="c1"># plot the missing data</span>
+<span class="n">plot_missing</span> <span class="o">&lt;-</span> <span class="nf">aggr</span><span class="p">(</span><span class="n">cancer_df</span><span class="p">,</span> <span class="n">col</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#39;navyblue&#39;</span><span class="p">,</span> <span class="s">&#39;red&#39;</span><span class="p">),</span> <span class="n">numbers</span> <span class="o">=</span> <span class="bp">T</span><span class="p">,</span> <span class="n">sortVars</span> <span class="o">=</span> <span class="bp">T</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
+<pre><span class="ansi-bold">Rows: </span><span class="ansi-blue-fg">699</span> <span class="ansi-bold">Columns: </span><span class="ansi-blue-fg">11</span>
+<span class="ansi-cyan-fg">──</span> <span class="ansi-bold">Column specification</span> <span class="ansi-cyan-fg">────────────────────────────────────────────────────────</span>
+<span class="ansi-bold">Delimiter:</span> &#34;,&#34;
+<span class="ansi-green-fg">dbl</span> (11): X1, X2, X3, X4, X5, X6, X7, X8, X9, X10, X11
+
+<span class="ansi-cyan-fg">ℹ</span> Use `spec()` to retrieve the full column specification for this data.
+<span class="ansi-cyan-fg">ℹ</span> Specify the column types or set `show_col_types = FALSE` to quiet this message.
+</pre>
+</div>
+</div>
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
+<table class="dataframe">
+<caption>A matrix: 3 × 11 of type dbl</caption>
+<thead>
+	<tr><th></th><th scope=col>X1</th><th scope=col>X2</th><th scope=col>X3</th><th scope=col>X4</th><th scope=col>X5</th><th scope=col>X6</th><th scope=col>X8</th><th scope=col>X9</th><th scope=col>X10</th><th scope=col>X7</th><th scope=col></th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>683</th><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td> 1</td><td> 0</td></tr>
+	<tr><th scope=row>16</th><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td> 0</td><td> 1</td></tr>
+	<tr><th scope=row></th><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>16</td><td>16</td></tr>
+</tbody>
+</table>
+
+</div>
+
+</div>
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+
+<div class="jp-RenderedImage jp-OutputArea-output ">
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA0gAAANICAMAAADKOT/pAAAANlBMVEUAAABMmNRNTU1oaGh8fHyMjIyampqnp6eysrK9vb3Hx8fMXoXQ0NDZ2dnh4eHp6enw8PD///9NULDDAAAACXBIWXMAABJ0AAASdAHeZh94AAAW9klEQVR4nO3c4VrbSLqFUY3ABjLEmPu/2YMNxHbiDEjedT6VstaP6Z554t2FpDeAyfTwCtxsqD4ArIGQIEBIECAkCBASBAgJAoQEAUKCACFBgJAgQEgQICQIEBIECAkChAQBQoIAIUGAkCBASBAgJAgQEgQICQKEBAFCggAhQYCQIEBIECAkCBASBAgJAoQEAUKCACFBgJAgQEgQICQIEBIECAkChAQBQoIAIUGAkCBASBAgJAgQEgQICQKEBAFCggAhQYCQIEBIECAkCBASBAgJAoQEAUKCACFBgJAgQEgQICQIEBIECAkChAQBQoIAIUGAkCBASBAgJAgQEgQICQKEBAFCggAhQYCQIEBIECAkCBASBAgJAoQEAUKCACFBgJAgQEgQICQIEBIECAkChAQBQoIAIUGAkCBASBAgJAgQEgQICQKEBAFCggAhQYCQIEBIECAkCBASBAgJAoQEAUKCACFBgJAgQEgQICQIEBIECAkChAQBQoIAIUGAkCBASBAgJAgQEgQICQKEBAFCggAhQYCQIEBIECAkCBASBAgJAoQEAUKCACFBgJAgQEgQICQIEBIECAkChAQBQoIAIUGAkCBASBAgJAgQEgQICQKEBAFCggAhQYCQIEBIECAkCBASBAgJAoQEAUKCACFBgJAgQEgQICQIEBIECAkChAQBQoIAIUGAkCBASBAgJAgQEgQICQKEBAFCggAhQYCQIEBIECAkCBASBAgJAoQEAUKCACFBgJAgQEgQICQIEBIECAkChAQBQoIAIUGAkCBASBAgJAgQEgQICQKEBAFCggAhQYCQIEBIECAkCBASBAgJAoQEAUKCACFBgJAgQEgQICQIEBIECAkChAQBQoIAIUGAkCBASBAgJAgQEgQICQKEBAFCggAhQYCQIEBIECAkCBASBAgJAoQEAUKCACFBgJAgQEgQICQIEBIECAkChAQBQoIAIUGAkCBASBAgJAgQEgQICQKEBAFCggAhQYCQIEBIECAkCBASBAgJAoQEAUKCACFBgJAgQEgQ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ggAhQYCQIEBIECAkCBASBAgJAoQEAUKCACFBgJAgQEgQICQIEBIECAkChAQBQoIAIUGAkCBASBAgJAgQEgQICQKEBAFCggAhQYCQIEBIECAkCBASBAgJAoQEAUKCACFBgJAgQEgQICQIEBIECAkChAQBQoIAIUGAkCBASBAgJAgQEgQICQKEBAFCggAhQYCQIEBIECAkCBASBAgJAoQEAUKCACFBgJAgQEgQICQIEBIECAkChAQBQoIAIUGAkCBASBAgJAgQEgQICQKEBAFCggAhQYCQIEBIECAkCBASBAgJAoQEAUKCACFBgJAgQEgQICQIEBIECAkChAQBQoIAIUGAkCBASBAgJAgQEgQICQKEBAFCggAhQYCQIEBIECAkCBASBAgJAoQEAUKCACFBgJAgQEgQICQIEBIECAkChAQBQoIAIUGAkCBASBAgJAgQEgQICQKEBAFCggAhQYCQIEBIECAkCBASBAgJAoQEAUKCACFBgJAgQEgQICQIEBIECAkChAQBQoIAIUGAkCBASBAgJAgQEgQICQKEBAFCggAhQYCQIEBIECAkCBASBAgJAoQEAUKCACFBgJAgQEgQICQIEBIECAkChAQBQoIAIUGAkCBASBAgJAgQEgQICQKEBAFCggAhQYCQIEBIECAkCBASBAgJAoQEAUKCACFBgJAgQEgQICQIEBIECAkChAQBQoIAIUGAkCBASBAgJAgQEgQICQKEBAFCggAhQYCQIEBIECAkCBASBAgJAoQEAUKCACFBgJAgQEgQICQIEBIECAkChAQBQoKA/wPzg2JdKT8bDwAAAABJRU5ErkJggg=="
+width=420
+height=420
+class="
+"
+>
+</div>
+
+</div>
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>
+ Variables sorted by number of missings: 
+ Variable      Count
+       X7 0.02288984
+       X1 0.00000000
+       X2 0.00000000
+       X3 0.00000000
+       X4 0.00000000
+       X5 0.00000000
+       X6 0.00000000
+       X8 0.00000000
+       X9 0.00000000
+      X10 0.00000000
+      X11 0.00000000
+</pre>
+</div>
+</div>
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+
+<div class="jp-RenderedImage jp-OutputArea-output ">
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA0gAAANICAMAAADKOT/pAAAANlBMVEUAAAAAAIBNTU1oaGh8fHyMjIyampqnp6eysrK9vb3Hx8fQ0NDZ2dnh4eHp6enw8PD/AAD///83k+reAAAACXBIWXMAABJ0AAASdAHeZh94AAAgAElEQVR4nO2da4OyuLJGMyCi7W37///sFrzbECt0KknlXevDOQ67xmQearUIAd0ZAP6Myz0BgBpAJIAIIBJABBAJIAKIBBABRAKIACIBRACRACKASAARQCSACCASQAQQCSACiAQQAUQCiAAiAUQAkQAigEgAEUAkgAggEkAEEAkgAogEEAFEAogAIgFEAJEAIoBIABFAJIAIIBJABBAJIAKIBBABRAKIACIBRACRACKASAARQCSACCASQAQQCSACiAQQgVwiuQkyTaUupoL918iSe45Bh3H/9wtEisFEsNd0/5tkZvPcdhvlWXLPMegZkdRAJETKNJW6QCREyjSVukAkRMo0lbpAJETKNJW6QCREyjSVukAkRMo0lbpAJETKNJW6QCREyjSVukAkRMo0lbpAJETKNJW6QCREyjSVukAkRMo0lbpAJETKNJW6QCREyjSVukAkRMo0lbpAJETKNJW6QCREyjSVukAkRMo0lbpAJETKNJW6QCREyjSVukAkRMo0lbpAJETKNJW6QCREyjSVukAkRMo0lbpAJETKNJW6QCREyjSVukCkN5GSPQgckSoDkRAp01TqApEQKdNU6gKRECnTVOoCkRAp01TqApEQKdNU6gKRECnTVOoCkRAp01TqApEQKdNU6gKRECnTVOoCkRAp01TqApEQKdNU6gKRECnTVOoCkRAp01TqApEQKdNU6gKRECnTVOoCkRAp01TqApEQKdNU6gKRECnTVOoCkRAp01TqApEQKdNU6gKRECnTVOoCkRAp01TqApEQKdNU6gKRECnTVOoCkRAp01TqApEQKdNU6gKRECnTVOoCkRAp01TqApEQKdNU6gKRECnTVOoCkRAp01TqApEQKdNU6gKRLIu033RuoOv30nERSQdEsivSqXVPVsJxEUkHRLIrUu+an8P46rhrXC8bF5F0QCS7IjXu8Hh9cI1sXETSAZHsiuQWzByRlEAkuyLxiVQQiGRXpMt3pN1xfMV3pOwgkl2RzquXs3btSTYuIumASIZFOu/78TpS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"
+width=420
+height=420
+class="
+"
+>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-r"><pre><span></span><span class="c1"># imputation using the mice package - mean imputation</span>
+<span class="n">mean_impute</span> <span class="o">&lt;-</span> <span class="nf">mice</span><span class="p">(</span><span class="n">cancer_df</span><span class="p">,</span> <span class="n">m</span> <span class="o">=</span> <span class="m">5</span><span class="p">,</span> <span class="n">meth</span> <span class="o">=</span> <span class="s">&#39;mean&#39;</span> <span class="p">)</span>
+
+<span class="c1"># look at the values</span>
+<span class="n">mean_impute</span><span class="o">$</span><span class="n">imp</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>
+ iter imp variable
+  1   1  X7
+  1   2  X7
+  1   3  X7
+  1   4  X7
+  1   5  X7
+  2   1  X7
+  2   2  X7
+  2   3  X7
+  2   4  X7
+  2   5  X7
+  3   1  X7
+  3   2  X7
+  3   3  X7
+  3   4  X7
+  3   5  X7
+  4   1  X7
+  4   2  X7
+  4   3  X7
+  4   4  X7
+  4   5  X7
+  5   1  X7
+  5   2  X7
+  5   3  X7
+  5   4  X7
+  5   5  X7
+</pre>
+</div>
+</div>
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
+<pre>Warning message:
+&#34;Number of logged events: 1&#34;
+</pre>
+</div>
+</div>
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
+<dl>
+	<dt>$X1</dt>
+		<dd><table class="dataframe">
+<caption>A data.frame: 0 × 5</caption>
+<thead>
+	<tr><th scope=col>1</th><th scope=col>2</th><th scope=col>3</th><th scope=col>4</th><th scope=col>5</th></tr>
+	<tr><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;lgl&gt;</th></tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+</dd>
+	<dt>$X2</dt>
+		<dd><table class="dataframe">
+<caption>A data.frame: 0 × 5</caption>
+<thead>
+	<tr><th scope=col>1</th><th scope=col>2</th><th scope=col>3</th><th scope=col>4</th><th scope=col>5</th></tr>
+	<tr><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;lgl&gt;</th></tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+</dd>
+	<dt>$X3</dt>
+		<dd><table class="dataframe">
+<caption>A data.frame: 0 × 5</caption>
+<thead>
+	<tr><th scope=col>1</th><th scope=col>2</th><th scope=col>3</th><th scope=col>4</th><th scope=col>5</th></tr>
+	<tr><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;lgl&gt;</th></tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+</dd>
+	<dt>$X4</dt>
+		<dd><table class="dataframe">
+<caption>A data.frame: 0 × 5</caption>
+<thead>
+	<tr><th scope=col>1</th><th scope=col>2</th><th scope=col>3</th><th scope=col>4</th><th scope=col>5</th></tr>
+	<tr><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;lgl&gt;</th></tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+</dd>
+	<dt>$X5</dt>
+		<dd><table class="dataframe">
+<caption>A data.frame: 0 × 5</caption>
+<thead>
+	<tr><th scope=col>1</th><th scope=col>2</th><th scope=col>3</th><th scope=col>4</th><th scope=col>5</th></tr>
+	<tr><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;lgl&gt;</th></tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+</dd>
+	<dt>$X6</dt>
+		<dd><table class="dataframe">
+<caption>A data.frame: 0 × 5</caption>
+<thead>
+	<tr><th scope=col>1</th><th scope=col>2</th><th scope=col>3</th><th scope=col>4</th><th scope=col>5</th></tr>
+	<tr><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;lgl&gt;</th></tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+</dd>
+	<dt>$X7</dt>
+		<dd><table class="dataframe">
+<caption>A data.frame: 16 × 5</caption>
+<thead>
+	<tr><th></th><th scope=col>1</th><th scope=col>2</th><th scope=col>3</th><th scope=col>4</th><th scope=col>5</th></tr>
+	<tr><th></th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>24</th><td>3.544656</td><td>3.544656</td><td>3.544656</td><td>3.544656</td><td>3.544656</td></tr>
+	<tr><th scope=row>41</th><td>3.544656</td><td>3.544656</td><td>3.544656</td><td>3.544656</td><td>3.544656</td></tr>
+	<tr><th scope=row>140</th><td>3.544656</td><td>3.544656</td><td>3.544656</td><td>3.544656</td><td>3.544656</td></tr>
+	<tr><th scope=row>146</th><td>3.544656</td><td>3.544656</td><td>3.544656</td><td>3.544656</td><td>3.544656</td></tr>
+	<tr><th scope=row>159</th><td>3.544656</td><td>3.544656</td><td>3.544656</td><td>3.544656</td><td>3.544656</td></tr>
+	<tr><th scope=row>165</th><td>3.544656</td><td>3.544656</td><td>3.544656</td><td>3.544656</td><td>3.544656</td></tr>
+	<tr><th scope=row>236</th><td>3.544656</td><td>3.544656</td><td>3.544656</td><td>3.544656</td><td>3.544656</td></tr>
+	<tr><th scope=row>250</th><td>3.544656</td><td>3.544656</td><td>3.544656</td><td>3.544656</td><td>3.544656</td></tr>
+	<tr><th scope=row>276</th><td>3.544656</td><td>3.544656</td><td>3.544656</td><td>3.544656</td><td>3.544656</td></tr>
+	<tr><th scope=row>293</th><td>3.544656</td><td>3.544656</td><td>3.544656</td><td>3.544656</td><td>3.544656</td></tr>
+	<tr><th scope=row>295</th><td>3.544656</td><td>3.544656</td><td>3.544656</td><td>3.544656</td><td>3.544656</td></tr>
+	<tr><th scope=row>298</th><td>3.544656</td><td>3.544656</td><td>3.544656</td><td>3.544656</td><td>3.544656</td></tr>
+	<tr><th scope=row>316</th><td>3.544656</td><td>3.544656</td><td>3.544656</td><td>3.544656</td><td>3.544656</td></tr>
+	<tr><th scope=row>322</th><td>3.544656</td><td>3.544656</td><td>3.544656</td><td>3.544656</td><td>3.544656</td></tr>
+	<tr><th scope=row>412</th><td>3.544656</td><td>3.544656</td><td>3.544656</td><td>3.544656</td><td>3.544656</td></tr>
+	<tr><th scope=row>618</th><td>3.544656</td><td>3.544656</td><td>3.544656</td><td>3.544656</td><td>3.544656</td></tr>
+</tbody>
+</table>
+</dd>
+	<dt>$X8</dt>
+		<dd><table class="dataframe">
+<caption>A data.frame: 0 × 5</caption>
+<thead>
+	<tr><th scope=col>1</th><th scope=col>2</th><th scope=col>3</th><th scope=col>4</th><th scope=col>5</th></tr>
+	<tr><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;lgl&gt;</th></tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+</dd>
+	<dt>$X9</dt>
+		<dd><table class="dataframe">
+<caption>A data.frame: 0 × 5</caption>
+<thead>
+	<tr><th scope=col>1</th><th scope=col>2</th><th scope=col>3</th><th scope=col>4</th><th scope=col>5</th></tr>
+	<tr><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;lgl&gt;</th></tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+</dd>
+	<dt>$X10</dt>
+		<dd><table class="dataframe">
+<caption>A data.frame: 0 × 5</caption>
+<thead>
+	<tr><th scope=col>1</th><th scope=col>2</th><th scope=col>3</th><th scope=col>4</th><th scope=col>5</th></tr>
+	<tr><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;lgl&gt;</th></tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+</dd>
+	<dt>$X11</dt>
+		<dd><table class="dataframe">
+<caption>A data.frame: 0 × 5</caption>
+<thead>
+	<tr><th scope=col>1</th><th scope=col>2</th><th scope=col>3</th><th scope=col>4</th><th scope=col>5</th></tr>
+	<tr><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;lgl&gt;</th></tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+</dd>
+</dl>
+
+</div>
+
+</div>
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>
+ iter imp variable
+  1   1  X7
+  1   2  X7
+  1   3  X7
+  1   4  X7
+  1   5  X7
+  2   1  X7
+  2   2  X7
+  2   3  X7
+  2   4  X7
+  2   5  X7
+  3   1  X7
+  3   2  X7
+  3   3  X7
+  3   4  X7
+  3   5  X7
+  4   1  X7
+  4   2  X7
+  4   3  X7
+  4   4  X7
+  4   5  X7
+  5   1  X7
+  5   2  X7
+  5   3  X7
+  5   4  X7
+  5   5  X7
+</pre>
+</div>
+</div>
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
+<pre>Warning message:
+&#34;Number of logged events: 1&#34;
+</pre>
+</div>
+</div>
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
+<dl>
+	<dt>$X1</dt>
+		<dd><table class="dataframe">
+<caption>A data.frame: 0 × 5</caption>
+<thead>
+	<tr><th scope=col>1</th><th scope=col>2</th><th scope=col>3</th><th scope=col>4</th><th scope=col>5</th></tr>
+	<tr><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;lgl&gt;</th></tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+</dd>
+	<dt>$X2</dt>
+		<dd><table class="dataframe">
+<caption>A data.frame: 0 × 5</caption>
+<thead>
+	<tr><th scope=col>1</th><th scope=col>2</th><th scope=col>3</th><th scope=col>4</th><th scope=col>5</th></tr>
+	<tr><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;lgl&gt;</th></tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+</dd>
+	<dt>$X3</dt>
+		<dd><table class="dataframe">
+<caption>A data.frame: 0 × 5</caption>
+<thead>
+	<tr><th scope=col>1</th><th scope=col>2</th><th scope=col>3</th><th scope=col>4</th><th scope=col>5</th></tr>
+	<tr><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;lgl&gt;</th></tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+</dd>
+	<dt>$X4</dt>
+		<dd><table class="dataframe">
+<caption>A data.frame: 0 × 5</caption>
+<thead>
+	<tr><th scope=col>1</th><th scope=col>2</th><th scope=col>3</th><th scope=col>4</th><th scope=col>5</th></tr>
+	<tr><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;lgl&gt;</th></tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+</dd>
+	<dt>$X5</dt>
+		<dd><table class="dataframe">
+<caption>A data.frame: 0 × 5</caption>
+<thead>
+	<tr><th scope=col>1</th><th scope=col>2</th><th scope=col>3</th><th scope=col>4</th><th scope=col>5</th></tr>
+	<tr><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;lgl&gt;</th></tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+</dd>
+	<dt>$X6</dt>
+		<dd><table class="dataframe">
+<caption>A data.frame: 0 × 5</caption>
+<thead>
+	<tr><th scope=col>1</th><th scope=col>2</th><th scope=col>3</th><th scope=col>4</th><th scope=col>5</th></tr>
+	<tr><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;lgl&gt;</th></tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+</dd>
+	<dt>$X7</dt>
+		<dd><table class="dataframe">
+<caption>A data.frame: 16 × 5</caption>
+<thead>
+	<tr><th></th><th scope=col>1</th><th scope=col>2</th><th scope=col>3</th><th scope=col>4</th><th scope=col>5</th></tr>
+	<tr><th></th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>24</th><td>5.3669508</td><td>5.3669508</td><td>5.3669508</td><td>5.3669508</td><td>5.3669508</td></tr>
+	<tr><th scope=row>41</th><td>8.1907122</td><td>8.1907122</td><td>8.1907122</td><td>8.1907122</td><td>8.1907122</td></tr>
+	<tr><th scope=row>140</th><td>0.8738591</td><td>0.8738591</td><td>0.8738591</td><td>0.8738591</td><td>0.8738591</td></tr>
+	<tr><th scope=row>146</th><td>1.6463893</td><td>1.6463893</td><td>1.6463893</td><td>1.6463893</td><td>1.6463893</td></tr>
+	<tr><th scope=row>159</th><td>1.0731978</td><td>1.0731978</td><td>1.0731978</td><td>1.0731978</td><td>1.0731978</td></tr>
+	<tr><th scope=row>165</th><td>2.1870186</td><td>2.1870186</td><td>2.1870186</td><td>2.1870186</td><td>2.1870186</td></tr>
+	<tr><th scope=row>236</th><td>2.7459168</td><td>2.7459168</td><td>2.7459168</td><td>2.7459168</td><td>2.7459168</td></tr>
+	<tr><th scope=row>250</th><td>2.0127161</td><td>2.0127161</td><td>2.0127161</td><td>2.0127161</td><td>2.0127161</td></tr>
+	<tr><th scope=row>276</th><td>2.3072038</td><td>2.3072038</td><td>2.3072038</td><td>2.3072038</td><td>2.3072038</td></tr>
+	<tr><th scope=row>293</th><td>5.9989744</td><td>5.9989744</td><td>5.9989744</td><td>5.9989744</td><td>5.9989744</td></tr>
+	<tr><th scope=row>295</th><td>1.1204527</td><td>1.1204527</td><td>1.1204527</td><td>1.1204527</td><td>1.1204527</td></tr>
+	<tr><th scope=row>298</th><td>2.6839366</td><td>2.6839366</td><td>2.6839366</td><td>2.6839366</td><td>2.6839366</td></tr>
+	<tr><th scope=row>316</th><td>5.6353059</td><td>5.6353059</td><td>5.6353059</td><td>5.6353059</td><td>5.6353059</td></tr>
+	<tr><th scope=row>322</th><td>1.8585015</td><td>1.8585015</td><td>1.8585015</td><td>1.8585015</td><td>1.8585015</td></tr>
+	<tr><th scope=row>412</th><td>0.8587684</td><td>0.8587684</td><td>0.8587684</td><td>0.8587684</td><td>0.8587684</td></tr>
+	<tr><th scope=row>618</th><td>0.5907393</td><td>0.5907393</td><td>0.5907393</td><td>0.5907393</td><td>0.5907393</td></tr>
+</tbody>
+</table>
+</dd>
+	<dt>$X8</dt>
+		<dd><table class="dataframe">
+<caption>A data.frame: 0 × 5</caption>
+<thead>
+	<tr><th scope=col>1</th><th scope=col>2</th><th scope=col>3</th><th scope=col>4</th><th scope=col>5</th></tr>
+	<tr><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;lgl&gt;</th></tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+</dd>
+	<dt>$X9</dt>
+		<dd><table class="dataframe">
+<caption>A data.frame: 0 × 5</caption>
+<thead>
+	<tr><th scope=col>1</th><th scope=col>2</th><th scope=col>3</th><th scope=col>4</th><th scope=col>5</th></tr>
+	<tr><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;lgl&gt;</th></tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+</dd>
+	<dt>$X10</dt>
+		<dd><table class="dataframe">
+<caption>A data.frame: 0 × 5</caption>
+<thead>
+	<tr><th scope=col>1</th><th scope=col>2</th><th scope=col>3</th><th scope=col>4</th><th scope=col>5</th></tr>
+	<tr><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;lgl&gt;</th></tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+</dd>
+	<dt>$X11</dt>
+		<dd><table class="dataframe">
+<caption>A data.frame: 0 × 5</caption>
+<thead>
+	<tr><th scope=col>1</th><th scope=col>2</th><th scope=col>3</th><th scope=col>4</th><th scope=col>5</th></tr>
+	<tr><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;lgl&gt;</th></tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+</dd>
+</dl>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-r"><pre><span></span><span class="c1"># imputation using the mice package - regression ignoring model error</span>
+<span class="n">regression_impute</span> <span class="o">&lt;-</span> <span class="nf">mice</span><span class="p">(</span><span class="n">cancer_df</span><span class="p">,</span> <span class="n">m</span> <span class="o">=</span> <span class="m">5</span><span class="p">,</span> <span class="n">meth</span> <span class="o">=</span> <span class="s">&#39;norm.predict&#39;</span><span class="p">)</span>
+
+<span class="c1"># look at the values</span>
+<span class="n">regression_impute</span><span class="o">$</span><span class="n">imp</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-r"><pre><span></span><span class="c1"># imputation using the mice package - perturbation impute</span>
+<span class="n">pert_impute</span> <span class="o">&lt;-</span> <span class="nf">mice</span><span class="p">(</span><span class="n">cancer_df</span><span class="p">,</span> <span class="n">m</span> <span class="o">=</span> <span class="m">5</span><span class="p">,</span> <span class="n">meth</span> <span class="o">=</span> <span class="s">&#39;norm.nob&#39;</span><span class="p">)</span>
+
+
+<span class="c1"># look at the values</span>
+<span class="n">pert_impute</span><span class="o">$</span><span class="n">imp</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>
+ iter imp variable
+  1   1  X7
+  1   2  X7
+  1   3  X7
+  1   4  X7
+  1   5  X7
+  2   1  X7
+  2   2  X7
+  2   3  X7
+  2   4  X7
+  2   5  X7
+  3   1  X7
+  3   2  X7
+  3   3  X7
+  3   4  X7
+  3   5  X7
+  4   1  X7
+  4   2  X7
+  4   3  X7
+  4   4  X7
+  4   5  X7
+  5   1  X7
+  5   2  X7
+  5   3  X7
+  5   4  X7
+  5   5  X7
+</pre>
+</div>
+</div>
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
+<pre>Warning message:
+&#34;Number of logged events: 1&#34;
+</pre>
+</div>
+</div>
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
+<dl>
+	<dt>$X1</dt>
+		<dd><table class="dataframe">
+<caption>A data.frame: 0 × 5</caption>
+<thead>
+	<tr><th scope=col>1</th><th scope=col>2</th><th scope=col>3</th><th scope=col>4</th><th scope=col>5</th></tr>
+	<tr><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;lgl&gt;</th></tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+</dd>
+	<dt>$X2</dt>
+		<dd><table class="dataframe">
+<caption>A data.frame: 0 × 5</caption>
+<thead>
+	<tr><th scope=col>1</th><th scope=col>2</th><th scope=col>3</th><th scope=col>4</th><th scope=col>5</th></tr>
+	<tr><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;lgl&gt;</th></tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+</dd>
+	<dt>$X3</dt>
+		<dd><table class="dataframe">
+<caption>A data.frame: 0 × 5</caption>
+<thead>
+	<tr><th scope=col>1</th><th scope=col>2</th><th scope=col>3</th><th scope=col>4</th><th scope=col>5</th></tr>
+	<tr><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;lgl&gt;</th></tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+</dd>
+	<dt>$X4</dt>
+		<dd><table class="dataframe">
+<caption>A data.frame: 0 × 5</caption>
+<thead>
+	<tr><th scope=col>1</th><th scope=col>2</th><th scope=col>3</th><th scope=col>4</th><th scope=col>5</th></tr>
+	<tr><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;lgl&gt;</th></tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+</dd>
+	<dt>$X5</dt>
+		<dd><table class="dataframe">
+<caption>A data.frame: 0 × 5</caption>
+<thead>
+	<tr><th scope=col>1</th><th scope=col>2</th><th scope=col>3</th><th scope=col>4</th><th scope=col>5</th></tr>
+	<tr><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;lgl&gt;</th></tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+</dd>
+	<dt>$X6</dt>
+		<dd><table class="dataframe">
+<caption>A data.frame: 0 × 5</caption>
+<thead>
+	<tr><th scope=col>1</th><th scope=col>2</th><th scope=col>3</th><th scope=col>4</th><th scope=col>5</th></tr>
+	<tr><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;lgl&gt;</th></tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+</dd>
+	<dt>$X7</dt>
+		<dd><table class="dataframe">
+<caption>A data.frame: 16 × 5</caption>
+<thead>
+	<tr><th></th><th scope=col>1</th><th scope=col>2</th><th scope=col>3</th><th scope=col>4</th><th scope=col>5</th></tr>
+	<tr><th></th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>24</th><td> 3.74019613</td><td> 2.112548</td><td> 5.754193</td><td> 6.542245038</td><td> 8.3991056</td></tr>
+	<tr><th scope=row>41</th><td> 6.47785909</td><td>13.327107</td><td>11.031538</td><td> 5.279079278</td><td> 7.3691419</td></tr>
+	<tr><th scope=row>140</th><td> 1.02816124</td><td>-1.205451</td><td> 2.338500</td><td>-0.401999456</td><td> 0.3160545</td></tr>
+	<tr><th scope=row>146</th><td> 1.48513771</td><td>-2.179527</td><td> 3.562301</td><td> 0.008079856</td><td>-0.1830189</td></tr>
+	<tr><th scope=row>159</th><td> 2.33526892</td><td>-1.725926</td><td>-1.833393</td><td>-0.559918789</td><td> 0.8977351</td></tr>
+	<tr><th scope=row>165</th><td> 1.73465992</td><td>-1.528415</td><td> 1.617340</td><td>-0.988170624</td><td> 1.5126888</td></tr>
+	<tr><th scope=row>236</th><td> 3.11101934</td><td> 1.408588</td><td>-2.822924</td><td> 6.147719083</td><td> 5.4472161</td></tr>
+	<tr><th scope=row>250</th><td> 0.09159326</td><td> 2.701089</td><td> 3.150801</td><td>-1.743670278</td><td> 3.4485212</td></tr>
+	<tr><th scope=row>276</th><td> 2.38663866</td><td>-1.583771</td><td> 3.171041</td><td> 2.070783192</td><td> 2.4976321</td></tr>
+	<tr><th scope=row>293</th><td> 6.07586930</td><td> 5.927439</td><td> 3.048709</td><td> 6.976790384</td><td> 6.6228084</td></tr>
+	<tr><th scope=row>295</th><td> 1.98902076</td><td> 1.424256</td><td> 3.886388</td><td> 3.508502749</td><td> 3.8107415</td></tr>
+	<tr><th scope=row>298</th><td> 2.63590012</td><td> 2.728575</td><td> 4.621931</td><td> 4.930007558</td><td>-1.4773002</td></tr>
+	<tr><th scope=row>316</th><td> 5.16059793</td><td> 4.842153</td><td> 6.895866</td><td> 4.993188229</td><td> 3.4155540</td></tr>
+	<tr><th scope=row>322</th><td> 1.09375193</td><td> 2.803795</td><td> 2.331938</td><td> 4.507931165</td><td>-1.8924155</td></tr>
+	<tr><th scope=row>412</th><td>-0.38016150</td><td> 3.449344</td><td>-2.296806</td><td> 1.278841938</td><td> 0.2325643</td></tr>
+	<tr><th scope=row>618</th><td> 0.88052310</td><td>-3.112713</td><td> 1.746031</td><td>-0.125077946</td><td>-0.8736359</td></tr>
+</tbody>
+</table>
+</dd>
+	<dt>$X8</dt>
+		<dd><table class="dataframe">
+<caption>A data.frame: 0 × 5</caption>
+<thead>
+	<tr><th scope=col>1</th><th scope=col>2</th><th scope=col>3</th><th scope=col>4</th><th scope=col>5</th></tr>
+	<tr><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;lgl&gt;</th></tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+</dd>
+	<dt>$X9</dt>
+		<dd><table class="dataframe">
+<caption>A data.frame: 0 × 5</caption>
+<thead>
+	<tr><th scope=col>1</th><th scope=col>2</th><th scope=col>3</th><th scope=col>4</th><th scope=col>5</th></tr>
+	<tr><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;lgl&gt;</th></tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+</dd>
+	<dt>$X10</dt>
+		<dd><table class="dataframe">
+<caption>A data.frame: 0 × 5</caption>
+<thead>
+	<tr><th scope=col>1</th><th scope=col>2</th><th scope=col>3</th><th scope=col>4</th><th scope=col>5</th></tr>
+	<tr><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;lgl&gt;</th></tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+</dd>
+	<dt>$X11</dt>
+		<dd><table class="dataframe">
+<caption>A data.frame: 0 × 5</caption>
+<thead>
+	<tr><th scope=col>1</th><th scope=col>2</th><th scope=col>3</th><th scope=col>4</th><th scope=col>5</th></tr>
+	<tr><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;lgl&gt;</th><th scope=col>&lt;lgl&gt;</th></tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+</dd>
+</dl>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-r"><pre><span></span><span class="c1"># Data with mean impute</span>
+<span class="n">cancer_mean_df</span> <span class="o">&lt;-</span> <span class="nf">complete</span><span class="p">(</span><span class="n">mean_impute</span><span class="p">)</span>
+<span class="n">cancer_mean_df</span>
 </pre></div>
 
      </div>
@@ -14660,28 +15503,239 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
 <table class="dataframe">
-<caption>A tibble: 16 × 11</caption>
+<caption>A data.frame: 699 × 11</caption>
 <thead>
-	<tr><th scope=col>House</th><th scope=col>Large.Yard</th><th scope=col>Pool</th><th scope=col>Solar.Roof</th><th scope=col>Long.Driveway</th><th scope=col>Multi.Car.Garage</th><th scope=col>Walk.In.Closet</th><th scope=col>Man.Cave</th><th scope=col>Full.Bar</th><th scope=col>Golf.Access</th><th scope=col>New.Home</th></tr>
-	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;fct&gt;</th><th scope=col>&lt;fct&gt;</th><th scope=col>&lt;fct&gt;</th><th scope=col>&lt;fct&gt;</th><th scope=col>&lt;fct&gt;</th><th scope=col>&lt;fct&gt;</th><th scope=col>&lt;fct&gt;</th><th scope=col>&lt;fct&gt;</th><th scope=col>&lt;fct&gt;</th><th scope=col>&lt;fct&gt;</th></tr>
+	<tr><th scope=col>X1</th><th scope=col>X2</th><th scope=col>X3</th><th scope=col>X4</th><th scope=col>X5</th><th scope=col>X6</th><th scope=col>X7</th><th scope=col>X8</th><th scope=col>X9</th><th scope=col>X10</th><th scope=col>X11</th></tr>
+	<tr><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
 </thead>
 <tbody>
-	<tr><td>1 </td><td>Yes</td><td>No </td><td>No </td><td>No </td><td>Yes</td><td>Yes</td><td>No </td><td>Yes</td><td>No </td><td>Yes</td></tr>
-	<tr><td>2 </td><td>Yes</td><td>No </td><td>Yes</td><td>No </td><td>Yes</td><td>No </td><td>Yes</td><td>Yes</td><td>Yes</td><td>No </td></tr>
-	<tr><td>3 </td><td>Yes</td><td>Yes</td><td>Yes</td><td>Yes</td><td>No </td><td>No </td><td>No </td><td>No </td><td>Yes</td><td>No </td></tr>
-	<tr><td>4 </td><td>No </td><td>No </td><td>Yes</td><td>Yes</td><td>No </td><td>Yes</td><td>Yes</td><td>Yes</td><td>No </td><td>No </td></tr>
-	<tr><td>5 </td><td>Yes</td><td>No </td><td>Yes</td><td>Yes</td><td>Yes</td><td>No </td><td>Yes</td><td>No </td><td>No </td><td>Yes</td></tr>
-	<tr><td>6 </td><td>Yes</td><td>Yes</td><td>Yes</td><td>No </td><td>No </td><td>No </td><td>No </td><td>Yes</td><td>No </td><td>Yes</td></tr>
-	<tr><td>7 </td><td>No </td><td>Yes</td><td>No </td><td>No </td><td>Yes</td><td>No </td><td>Yes</td><td>No </td><td>Yes</td><td>Yes</td></tr>
-	<tr><td>8 </td><td>No </td><td>Yes</td><td>No </td><td>Yes</td><td>Yes</td><td>No </td><td>Yes</td><td>Yes</td><td>No </td><td>No </td></tr>
-	<tr><td>9 </td><td>No </td><td>No </td><td>Yes</td><td>No </td><td>No </td><td>Yes</td><td>Yes</td><td>No </td><td>Yes</td><td>Yes</td></tr>
-	<tr><td>10</td><td>No </td><td>Yes</td><td>Yes</td><td>No </td><td>Yes</td><td>Yes</td><td>No </td><td>No </td><td>No </td><td>No </td></tr>
-	<tr><td>11</td><td>Yes</td><td>No </td><td>No </td><td>Yes</td><td>Yes</td><td>Yes</td><td>No </td><td>No </td><td>Yes</td><td>No </td></tr>
-	<tr><td>12</td><td>Yes</td><td>Yes</td><td>No </td><td>No </td><td>No </td><td>Yes</td><td>Yes</td><td>Yes</td><td>Yes</td><td>No </td></tr>
-	<tr><td>13</td><td>No </td><td>Yes</td><td>Yes</td><td>Yes</td><td>Yes</td><td>Yes</td><td>No </td><td>Yes</td><td>Yes</td><td>Yes</td></tr>
-	<tr><td>14</td><td>Yes</td><td>Yes</td><td>No </td><td>Yes</td><td>No </td><td>Yes</td><td>Yes</td><td>No </td><td>No </td><td>Yes</td></tr>
-	<tr><td>15</td><td>No </td><td>No </td><td>No </td><td>No </td><td>No </td><td>No </td><td>No </td><td>No </td><td>No </td><td>No </td></tr>
-	<tr><td>16</td><td>No </td><td>No </td><td>No </td><td>Yes</td><td>No </td><td>No </td><td>No </td><td>Yes</td><td>Yes</td><td>Yes</td></tr>
+	<tr><td>1000025</td><td> 5</td><td> 1</td><td> 1</td><td> 1</td><td>2</td><td> 1.000000</td><td>3</td><td> 1</td><td>1</td><td>Benign   </td></tr>
+	<tr><td>1002945</td><td> 5</td><td> 4</td><td> 4</td><td> 5</td><td>7</td><td>10.000000</td><td>3</td><td> 2</td><td>1</td><td>Benign   </td></tr>
+	<tr><td>1015425</td><td> 3</td><td> 1</td><td> 1</td><td> 1</td><td>2</td><td> 2.000000</td><td>3</td><td> 1</td><td>1</td><td>Benign   </td></tr>
+	<tr><td>1016277</td><td> 6</td><td> 8</td><td> 8</td><td> 1</td><td>3</td><td> 4.000000</td><td>3</td><td> 7</td><td>1</td><td>Benign   </td></tr>
+	<tr><td>1017023</td><td> 4</td><td> 1</td><td> 1</td><td> 3</td><td>2</td><td> 1.000000</td><td>3</td><td> 1</td><td>1</td><td>Benign   </td></tr>
+	<tr><td>1017122</td><td> 8</td><td>10</td><td>10</td><td> 8</td><td>7</td><td>10.000000</td><td>9</td><td> 7</td><td>1</td><td>Malignant</td></tr>
+	<tr><td>1018099</td><td> 1</td><td> 1</td><td> 1</td><td> 1</td><td>2</td><td>10.000000</td><td>3</td><td> 1</td><td>1</td><td>Benign   </td></tr>
+	<tr><td>1018561</td><td> 2</td><td> 1</td><td> 2</td><td> 1</td><td>2</td><td> 1.000000</td><td>3</td><td> 1</td><td>1</td><td>Benign   </td></tr>
+	<tr><td>1033078</td><td> 2</td><td> 1</td><td> 1</td><td> 1</td><td>2</td><td> 1.000000</td><td>1</td><td> 1</td><td>5</td><td>Benign   </td></tr>
+	<tr><td>1033078</td><td> 4</td><td> 2</td><td> 1</td><td> 1</td><td>2</td><td> 1.000000</td><td>2</td><td> 1</td><td>1</td><td>Benign   </td></tr>
+	<tr><td>1035283</td><td> 1</td><td> 1</td><td> 1</td><td> 1</td><td>1</td><td> 1.000000</td><td>3</td><td> 1</td><td>1</td><td>Benign   </td></tr>
+	<tr><td>1036172</td><td> 2</td><td> 1</td><td> 1</td><td> 1</td><td>2</td><td> 1.000000</td><td>2</td><td> 1</td><td>1</td><td>Benign   </td></tr>
+	<tr><td>1041801</td><td> 5</td><td> 3</td><td> 3</td><td> 3</td><td>2</td><td> 3.000000</td><td>4</td><td> 4</td><td>1</td><td>Malignant</td></tr>
+	<tr><td>1043999</td><td> 1</td><td> 1</td><td> 1</td><td> 1</td><td>2</td><td> 3.000000</td><td>3</td><td> 1</td><td>1</td><td>Benign   </td></tr>
+	<tr><td>1044572</td><td> 8</td><td> 7</td><td> 5</td><td>10</td><td>7</td><td> 9.000000</td><td>5</td><td> 5</td><td>4</td><td>Malignant</td></tr>
+	<tr><td>1047630</td><td> 7</td><td> 4</td><td> 6</td><td> 4</td><td>6</td><td> 1.000000</td><td>4</td><td> 3</td><td>1</td><td>Malignant</td></tr>
+	<tr><td>1048672</td><td> 4</td><td> 1</td><td> 1</td><td> 1</td><td>2</td><td> 1.000000</td><td>2</td><td> 1</td><td>1</td><td>Benign   </td></tr>
+	<tr><td>1049815</td><td> 4</td><td> 1</td><td> 1</td><td> 1</td><td>2</td><td> 1.000000</td><td>3</td><td> 1</td><td>1</td><td>Benign   </td></tr>
+	<tr><td>1050670</td><td>10</td><td> 7</td><td> 7</td><td> 6</td><td>4</td><td>10.000000</td><td>4</td><td> 1</td><td>2</td><td>Malignant</td></tr>
+	<tr><td>1050718</td><td> 6</td><td> 1</td><td> 1</td><td> 1</td><td>2</td><td> 1.000000</td><td>3</td><td> 1</td><td>1</td><td>Benign   </td></tr>
+	<tr><td>1054590</td><td> 7</td><td> 3</td><td> 2</td><td>10</td><td>5</td><td>10.000000</td><td>5</td><td> 4</td><td>4</td><td>Malignant</td></tr>
+	<tr><td>1054593</td><td>10</td><td> 5</td><td> 5</td><td> 3</td><td>6</td><td> 7.000000</td><td>7</td><td>10</td><td>1</td><td>Malignant</td></tr>
+	<tr><td>1056784</td><td> 3</td><td> 1</td><td> 1</td><td> 1</td><td>2</td><td> 1.000000</td><td>2</td><td> 1</td><td>1</td><td>Benign   </td></tr>
+	<tr><td>1057013</td><td> 8</td><td> 4</td><td> 5</td><td> 1</td><td>2</td><td> 3.544656</td><td>7</td><td> 3</td><td>1</td><td>Malignant</td></tr>
+	<tr><td>1059552</td><td> 1</td><td> 1</td><td> 1</td><td> 1</td><td>2</td><td> 1.000000</td><td>3</td><td> 1</td><td>1</td><td>Benign   </td></tr>
+	<tr><td>1065726</td><td> 5</td><td> 2</td><td> 3</td><td> 4</td><td>2</td><td> 7.000000</td><td>3</td><td> 6</td><td>1</td><td>Malignant</td></tr>
+	<tr><td>1066373</td><td> 3</td><td> 2</td><td> 1</td><td> 1</td><td>1</td><td> 1.000000</td><td>2</td><td> 1</td><td>1</td><td>Benign   </td></tr>
+	<tr><td>1066979</td><td> 5</td><td> 1</td><td> 1</td><td> 1</td><td>2</td><td> 1.000000</td><td>2</td><td> 1</td><td>1</td><td>Benign   </td></tr>
+	<tr><td>1067444</td><td> 2</td><td> 1</td><td> 1</td><td> 1</td><td>2</td><td> 1.000000</td><td>2</td><td> 1</td><td>1</td><td>Benign   </td></tr>
+	<tr><td>1070935</td><td> 1</td><td> 1</td><td> 3</td><td> 1</td><td>2</td><td> 1.000000</td><td>1</td><td> 1</td><td>1</td><td>Benign   </td></tr>
+	<tr><td>⋮</td><td>⋮</td><td>⋮</td><td>⋮</td><td>⋮</td><td>⋮</td><td>⋮</td><td>⋮</td><td>⋮</td><td>⋮</td><td>⋮</td></tr>
+	<tr><td>1350423</td><td> 5</td><td>10</td><td>10</td><td> 8</td><td>5</td><td> 5</td><td> 7</td><td>10</td><td>1</td><td>Malignant</td></tr>
+	<tr><td>1352848</td><td> 3</td><td>10</td><td> 7</td><td> 8</td><td>5</td><td> 8</td><td> 7</td><td> 4</td><td>1</td><td>Malignant</td></tr>
+	<tr><td>1353092</td><td> 3</td><td> 2</td><td> 1</td><td> 2</td><td>2</td><td> 1</td><td> 3</td><td> 1</td><td>1</td><td>Benign   </td></tr>
+	<tr><td>1354840</td><td> 2</td><td> 1</td><td> 1</td><td> 1</td><td>2</td><td> 1</td><td> 3</td><td> 1</td><td>1</td><td>Benign   </td></tr>
+	<tr><td>1354840</td><td> 5</td><td> 3</td><td> 2</td><td> 1</td><td>3</td><td> 1</td><td> 1</td><td> 1</td><td>1</td><td>Benign   </td></tr>
+	<tr><td>1355260</td><td> 1</td><td> 1</td><td> 1</td><td> 1</td><td>2</td><td> 1</td><td> 2</td><td> 1</td><td>1</td><td>Benign   </td></tr>
+	<tr><td>1365075</td><td> 4</td><td> 1</td><td> 4</td><td> 1</td><td>2</td><td> 1</td><td> 1</td><td> 1</td><td>1</td><td>Benign   </td></tr>
+	<tr><td>1365328</td><td> 1</td><td> 1</td><td> 2</td><td> 1</td><td>2</td><td> 1</td><td> 2</td><td> 1</td><td>1</td><td>Benign   </td></tr>
+	<tr><td>1368267</td><td> 5</td><td> 1</td><td> 1</td><td> 1</td><td>2</td><td> 1</td><td> 1</td><td> 1</td><td>1</td><td>Benign   </td></tr>
+	<tr><td>1368273</td><td> 1</td><td> 1</td><td> 1</td><td> 1</td><td>2</td><td> 1</td><td> 1</td><td> 1</td><td>1</td><td>Benign   </td></tr>
+	<tr><td>1368882</td><td> 2</td><td> 1</td><td> 1</td><td> 1</td><td>2</td><td> 1</td><td> 1</td><td> 1</td><td>1</td><td>Benign   </td></tr>
+	<tr><td>1369821</td><td>10</td><td>10</td><td>10</td><td>10</td><td>5</td><td>10</td><td>10</td><td>10</td><td>7</td><td>Malignant</td></tr>
+	<tr><td>1371026</td><td> 5</td><td>10</td><td>10</td><td>10</td><td>4</td><td>10</td><td> 5</td><td> 6</td><td>3</td><td>Malignant</td></tr>
+	<tr><td>1371920</td><td> 5</td><td> 1</td><td> 1</td><td> 1</td><td>2</td><td> 1</td><td> 3</td><td> 2</td><td>1</td><td>Benign   </td></tr>
+	<tr><td> 466906</td><td> 1</td><td> 1</td><td> 1</td><td> 1</td><td>2</td><td> 1</td><td> 1</td><td> 1</td><td>1</td><td>Benign   </td></tr>
+	<tr><td> 466906</td><td> 1</td><td> 1</td><td> 1</td><td> 1</td><td>2</td><td> 1</td><td> 1</td><td> 1</td><td>1</td><td>Benign   </td></tr>
+	<tr><td> 534555</td><td> 1</td><td> 1</td><td> 1</td><td> 1</td><td>2</td><td> 1</td><td> 1</td><td> 1</td><td>1</td><td>Benign   </td></tr>
+	<tr><td> 536708</td><td> 1</td><td> 1</td><td> 1</td><td> 1</td><td>2</td><td> 1</td><td> 1</td><td> 1</td><td>1</td><td>Benign   </td></tr>
+	<tr><td> 566346</td><td> 3</td><td> 1</td><td> 1</td><td> 1</td><td>2</td><td> 1</td><td> 2</td><td> 3</td><td>1</td><td>Benign   </td></tr>
+	<tr><td> 603148</td><td> 4</td><td> 1</td><td> 1</td><td> 1</td><td>2</td><td> 1</td><td> 1</td><td> 1</td><td>1</td><td>Benign   </td></tr>
+	<tr><td> 654546</td><td> 1</td><td> 1</td><td> 1</td><td> 1</td><td>2</td><td> 1</td><td> 1</td><td> 1</td><td>8</td><td>Benign   </td></tr>
+	<tr><td> 654546</td><td> 1</td><td> 1</td><td> 1</td><td> 3</td><td>2</td><td> 1</td><td> 1</td><td> 1</td><td>1</td><td>Benign   </td></tr>
+	<tr><td> 695091</td><td> 5</td><td>10</td><td>10</td><td> 5</td><td>4</td><td> 5</td><td> 4</td><td> 4</td><td>1</td><td>Malignant</td></tr>
+	<tr><td> 714039</td><td> 3</td><td> 1</td><td> 1</td><td> 1</td><td>2</td><td> 1</td><td> 1</td><td> 1</td><td>1</td><td>Benign   </td></tr>
+	<tr><td> 763235</td><td> 3</td><td> 1</td><td> 1</td><td> 1</td><td>2</td><td> 1</td><td> 2</td><td> 1</td><td>2</td><td>Benign   </td></tr>
+	<tr><td> 776715</td><td> 3</td><td> 1</td><td> 1</td><td> 1</td><td>3</td><td> 2</td><td> 1</td><td> 1</td><td>1</td><td>Benign   </td></tr>
+	<tr><td> 841769</td><td> 2</td><td> 1</td><td> 1</td><td> 1</td><td>2</td><td> 1</td><td> 1</td><td> 1</td><td>1</td><td>Benign   </td></tr>
+	<tr><td> 888820</td><td> 5</td><td>10</td><td>10</td><td> 3</td><td>7</td><td> 3</td><td> 8</td><td>10</td><td>2</td><td>Malignant</td></tr>
+	<tr><td> 897471</td><td> 4</td><td> 8</td><td> 6</td><td> 4</td><td>3</td><td> 4</td><td>10</td><td> 6</td><td>1</td><td>Malignant</td></tr>
+	<tr><td> 897471</td><td> 4</td><td> 8</td><td> 8</td><td> 5</td><td>4</td><td> 5</td><td>10</td><td> 4</td><td>1</td><td>Malignant</td></tr>
+</tbody>
+</table>
+
+</div>
+
+</div>
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
+<table class="dataframe">
+<caption>A data.frame: 699 × 11</caption>
+<thead>
+	<tr><th scope=col>X1</th><th scope=col>X2</th><th scope=col>X3</th><th scope=col>X4</th><th scope=col>X5</th><th scope=col>X6</th><th scope=col>X7</th><th scope=col>X8</th><th scope=col>X9</th><th scope=col>X10</th><th scope=col>X11</th></tr>
+	<tr><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>1000025</td><td> 5</td><td> 1</td><td> 1</td><td> 1</td><td>2</td><td> 1.000000</td><td>3</td><td> 1</td><td>1</td><td>Benign   </td></tr>
+	<tr><td>1002945</td><td> 5</td><td> 4</td><td> 4</td><td> 5</td><td>7</td><td>10.000000</td><td>3</td><td> 2</td><td>1</td><td>Benign   </td></tr>
+	<tr><td>1015425</td><td> 3</td><td> 1</td><td> 1</td><td> 1</td><td>2</td><td> 2.000000</td><td>3</td><td> 1</td><td>1</td><td>Benign   </td></tr>
+	<tr><td>1016277</td><td> 6</td><td> 8</td><td> 8</td><td> 1</td><td>3</td><td> 4.000000</td><td>3</td><td> 7</td><td>1</td><td>Benign   </td></tr>
+	<tr><td>1017023</td><td> 4</td><td> 1</td><td> 1</td><td> 3</td><td>2</td><td> 1.000000</td><td>3</td><td> 1</td><td>1</td><td>Benign   </td></tr>
+	<tr><td>1017122</td><td> 8</td><td>10</td><td>10</td><td> 8</td><td>7</td><td>10.000000</td><td>9</td><td> 7</td><td>1</td><td>Malignant</td></tr>
+	<tr><td>1018099</td><td> 1</td><td> 1</td><td> 1</td><td> 1</td><td>2</td><td>10.000000</td><td>3</td><td> 1</td><td>1</td><td>Benign   </td></tr>
+	<tr><td>1018561</td><td> 2</td><td> 1</td><td> 2</td><td> 1</td><td>2</td><td> 1.000000</td><td>3</td><td> 1</td><td>1</td><td>Benign   </td></tr>
+	<tr><td>1033078</td><td> 2</td><td> 1</td><td> 1</td><td> 1</td><td>2</td><td> 1.000000</td><td>1</td><td> 1</td><td>5</td><td>Benign   </td></tr>
+	<tr><td>1033078</td><td> 4</td><td> 2</td><td> 1</td><td> 1</td><td>2</td><td> 1.000000</td><td>2</td><td> 1</td><td>1</td><td>Benign   </td></tr>
+	<tr><td>1035283</td><td> 1</td><td> 1</td><td> 1</td><td> 1</td><td>1</td><td> 1.000000</td><td>3</td><td> 1</td><td>1</td><td>Benign   </td></tr>
+	<tr><td>1036172</td><td> 2</td><td> 1</td><td> 1</td><td> 1</td><td>2</td><td> 1.000000</td><td>2</td><td> 1</td><td>1</td><td>Benign   </td></tr>
+	<tr><td>1041801</td><td> 5</td><td> 3</td><td> 3</td><td> 3</td><td>2</td><td> 3.000000</td><td>4</td><td> 4</td><td>1</td><td>Malignant</td></tr>
+	<tr><td>1043999</td><td> 1</td><td> 1</td><td> 1</td><td> 1</td><td>2</td><td> 3.000000</td><td>3</td><td> 1</td><td>1</td><td>Benign   </td></tr>
+	<tr><td>1044572</td><td> 8</td><td> 7</td><td> 5</td><td>10</td><td>7</td><td> 9.000000</td><td>5</td><td> 5</td><td>4</td><td>Malignant</td></tr>
+	<tr><td>1047630</td><td> 7</td><td> 4</td><td> 6</td><td> 4</td><td>6</td><td> 1.000000</td><td>4</td><td> 3</td><td>1</td><td>Malignant</td></tr>
+	<tr><td>1048672</td><td> 4</td><td> 1</td><td> 1</td><td> 1</td><td>2</td><td> 1.000000</td><td>2</td><td> 1</td><td>1</td><td>Benign   </td></tr>
+	<tr><td>1049815</td><td> 4</td><td> 1</td><td> 1</td><td> 1</td><td>2</td><td> 1.000000</td><td>3</td><td> 1</td><td>1</td><td>Benign   </td></tr>
+	<tr><td>1050670</td><td>10</td><td> 7</td><td> 7</td><td> 6</td><td>4</td><td>10.000000</td><td>4</td><td> 1</td><td>2</td><td>Malignant</td></tr>
+	<tr><td>1050718</td><td> 6</td><td> 1</td><td> 1</td><td> 1</td><td>2</td><td> 1.000000</td><td>3</td><td> 1</td><td>1</td><td>Benign   </td></tr>
+	<tr><td>1054590</td><td> 7</td><td> 3</td><td> 2</td><td>10</td><td>5</td><td>10.000000</td><td>5</td><td> 4</td><td>4</td><td>Malignant</td></tr>
+	<tr><td>1054593</td><td>10</td><td> 5</td><td> 5</td><td> 3</td><td>6</td><td> 7.000000</td><td>7</td><td>10</td><td>1</td><td>Malignant</td></tr>
+	<tr><td>1056784</td><td> 3</td><td> 1</td><td> 1</td><td> 1</td><td>2</td><td> 1.000000</td><td>2</td><td> 1</td><td>1</td><td>Benign   </td></tr>
+	<tr><td>1057013</td><td> 8</td><td> 4</td><td> 5</td><td> 1</td><td>2</td><td> 5.366951</td><td>7</td><td> 3</td><td>1</td><td>Malignant</td></tr>
+	<tr><td>1059552</td><td> 1</td><td> 1</td><td> 1</td><td> 1</td><td>2</td><td> 1.000000</td><td>3</td><td> 1</td><td>1</td><td>Benign   </td></tr>
+	<tr><td>1065726</td><td> 5</td><td> 2</td><td> 3</td><td> 4</td><td>2</td><td> 7.000000</td><td>3</td><td> 6</td><td>1</td><td>Malignant</td></tr>
+	<tr><td>1066373</td><td> 3</td><td> 2</td><td> 1</td><td> 1</td><td>1</td><td> 1.000000</td><td>2</td><td> 1</td><td>1</td><td>Benign   </td></tr>
+	<tr><td>1066979</td><td> 5</td><td> 1</td><td> 1</td><td> 1</td><td>2</td><td> 1.000000</td><td>2</td><td> 1</td><td>1</td><td>Benign   </td></tr>
+	<tr><td>1067444</td><td> 2</td><td> 1</td><td> 1</td><td> 1</td><td>2</td><td> 1.000000</td><td>2</td><td> 1</td><td>1</td><td>Benign   </td></tr>
+	<tr><td>1070935</td><td> 1</td><td> 1</td><td> 3</td><td> 1</td><td>2</td><td> 1.000000</td><td>1</td><td> 1</td><td>1</td><td>Benign   </td></tr>
+	<tr><td>⋮</td><td>⋮</td><td>⋮</td><td>⋮</td><td>⋮</td><td>⋮</td><td>⋮</td><td>⋮</td><td>⋮</td><td>⋮</td><td>⋮</td></tr>
+	<tr><td>1350423</td><td> 5</td><td>10</td><td>10</td><td> 8</td><td>5</td><td> 5</td><td> 7</td><td>10</td><td>1</td><td>Malignant</td></tr>
+	<tr><td>1352848</td><td> 3</td><td>10</td><td> 7</td><td> 8</td><td>5</td><td> 8</td><td> 7</td><td> 4</td><td>1</td><td>Malignant</td></tr>
+	<tr><td>1353092</td><td> 3</td><td> 2</td><td> 1</td><td> 2</td><td>2</td><td> 1</td><td> 3</td><td> 1</td><td>1</td><td>Benign   </td></tr>
+	<tr><td>1354840</td><td> 2</td><td> 1</td><td> 1</td><td> 1</td><td>2</td><td> 1</td><td> 3</td><td> 1</td><td>1</td><td>Benign   </td></tr>
+	<tr><td>1354840</td><td> 5</td><td> 3</td><td> 2</td><td> 1</td><td>3</td><td> 1</td><td> 1</td><td> 1</td><td>1</td><td>Benign   </td></tr>
+	<tr><td>1355260</td><td> 1</td><td> 1</td><td> 1</td><td> 1</td><td>2</td><td> 1</td><td> 2</td><td> 1</td><td>1</td><td>Benign   </td></tr>
+	<tr><td>1365075</td><td> 4</td><td> 1</td><td> 4</td><td> 1</td><td>2</td><td> 1</td><td> 1</td><td> 1</td><td>1</td><td>Benign   </td></tr>
+	<tr><td>1365328</td><td> 1</td><td> 1</td><td> 2</td><td> 1</td><td>2</td><td> 1</td><td> 2</td><td> 1</td><td>1</td><td>Benign   </td></tr>
+	<tr><td>1368267</td><td> 5</td><td> 1</td><td> 1</td><td> 1</td><td>2</td><td> 1</td><td> 1</td><td> 1</td><td>1</td><td>Benign   </td></tr>
+	<tr><td>1368273</td><td> 1</td><td> 1</td><td> 1</td><td> 1</td><td>2</td><td> 1</td><td> 1</td><td> 1</td><td>1</td><td>Benign   </td></tr>
+	<tr><td>1368882</td><td> 2</td><td> 1</td><td> 1</td><td> 1</td><td>2</td><td> 1</td><td> 1</td><td> 1</td><td>1</td><td>Benign   </td></tr>
+	<tr><td>1369821</td><td>10</td><td>10</td><td>10</td><td>10</td><td>5</td><td>10</td><td>10</td><td>10</td><td>7</td><td>Malignant</td></tr>
+	<tr><td>1371026</td><td> 5</td><td>10</td><td>10</td><td>10</td><td>4</td><td>10</td><td> 5</td><td> 6</td><td>3</td><td>Malignant</td></tr>
+	<tr><td>1371920</td><td> 5</td><td> 1</td><td> 1</td><td> 1</td><td>2</td><td> 1</td><td> 3</td><td> 2</td><td>1</td><td>Benign   </td></tr>
+	<tr><td> 466906</td><td> 1</td><td> 1</td><td> 1</td><td> 1</td><td>2</td><td> 1</td><td> 1</td><td> 1</td><td>1</td><td>Benign   </td></tr>
+	<tr><td> 466906</td><td> 1</td><td> 1</td><td> 1</td><td> 1</td><td>2</td><td> 1</td><td> 1</td><td> 1</td><td>1</td><td>Benign   </td></tr>
+	<tr><td> 534555</td><td> 1</td><td> 1</td><td> 1</td><td> 1</td><td>2</td><td> 1</td><td> 1</td><td> 1</td><td>1</td><td>Benign   </td></tr>
+	<tr><td> 536708</td><td> 1</td><td> 1</td><td> 1</td><td> 1</td><td>2</td><td> 1</td><td> 1</td><td> 1</td><td>1</td><td>Benign   </td></tr>
+	<tr><td> 566346</td><td> 3</td><td> 1</td><td> 1</td><td> 1</td><td>2</td><td> 1</td><td> 2</td><td> 3</td><td>1</td><td>Benign   </td></tr>
+	<tr><td> 603148</td><td> 4</td><td> 1</td><td> 1</td><td> 1</td><td>2</td><td> 1</td><td> 1</td><td> 1</td><td>1</td><td>Benign   </td></tr>
+	<tr><td> 654546</td><td> 1</td><td> 1</td><td> 1</td><td> 1</td><td>2</td><td> 1</td><td> 1</td><td> 1</td><td>8</td><td>Benign   </td></tr>
+	<tr><td> 654546</td><td> 1</td><td> 1</td><td> 1</td><td> 3</td><td>2</td><td> 1</td><td> 1</td><td> 1</td><td>1</td><td>Benign   </td></tr>
+	<tr><td> 695091</td><td> 5</td><td>10</td><td>10</td><td> 5</td><td>4</td><td> 5</td><td> 4</td><td> 4</td><td>1</td><td>Malignant</td></tr>
+	<tr><td> 714039</td><td> 3</td><td> 1</td><td> 1</td><td> 1</td><td>2</td><td> 1</td><td> 1</td><td> 1</td><td>1</td><td>Benign   </td></tr>
+	<tr><td> 763235</td><td> 3</td><td> 1</td><td> 1</td><td> 1</td><td>2</td><td> 1</td><td> 2</td><td> 1</td><td>2</td><td>Benign   </td></tr>
+	<tr><td> 776715</td><td> 3</td><td> 1</td><td> 1</td><td> 1</td><td>3</td><td> 2</td><td> 1</td><td> 1</td><td>1</td><td>Benign   </td></tr>
+	<tr><td> 841769</td><td> 2</td><td> 1</td><td> 1</td><td> 1</td><td>2</td><td> 1</td><td> 1</td><td> 1</td><td>1</td><td>Benign   </td></tr>
+	<tr><td> 888820</td><td> 5</td><td>10</td><td>10</td><td> 3</td><td>7</td><td> 3</td><td> 8</td><td>10</td><td>2</td><td>Malignant</td></tr>
+	<tr><td> 897471</td><td> 4</td><td> 8</td><td> 6</td><td> 4</td><td>3</td><td> 4</td><td>10</td><td> 6</td><td>1</td><td>Malignant</td></tr>
+	<tr><td> 897471</td><td> 4</td><td> 8</td><td> 8</td><td> 5</td><td>4</td><td> 5</td><td>10</td><td> 4</td><td>1</td><td>Malignant</td></tr>
+</tbody>
+</table>
+
+</div>
+
+</div>
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
+<table class="dataframe">
+<caption>A data.frame: 699 × 11</caption>
+<thead>
+	<tr><th scope=col>X1</th><th scope=col>X2</th><th scope=col>X3</th><th scope=col>X4</th><th scope=col>X5</th><th scope=col>X6</th><th scope=col>X7</th><th scope=col>X8</th><th scope=col>X9</th><th scope=col>X10</th><th scope=col>X11</th></tr>
+	<tr><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>1000025</td><td> 5</td><td> 1</td><td> 1</td><td> 1</td><td>2</td><td> 1.000000</td><td>3</td><td> 1</td><td>1</td><td>Benign   </td></tr>
+	<tr><td>1002945</td><td> 5</td><td> 4</td><td> 4</td><td> 5</td><td>7</td><td>10.000000</td><td>3</td><td> 2</td><td>1</td><td>Benign   </td></tr>
+	<tr><td>1015425</td><td> 3</td><td> 1</td><td> 1</td><td> 1</td><td>2</td><td> 2.000000</td><td>3</td><td> 1</td><td>1</td><td>Benign   </td></tr>
+	<tr><td>1016277</td><td> 6</td><td> 8</td><td> 8</td><td> 1</td><td>3</td><td> 4.000000</td><td>3</td><td> 7</td><td>1</td><td>Benign   </td></tr>
+	<tr><td>1017023</td><td> 4</td><td> 1</td><td> 1</td><td> 3</td><td>2</td><td> 1.000000</td><td>3</td><td> 1</td><td>1</td><td>Benign   </td></tr>
+	<tr><td>1017122</td><td> 8</td><td>10</td><td>10</td><td> 8</td><td>7</td><td>10.000000</td><td>9</td><td> 7</td><td>1</td><td>Malignant</td></tr>
+	<tr><td>1018099</td><td> 1</td><td> 1</td><td> 1</td><td> 1</td><td>2</td><td>10.000000</td><td>3</td><td> 1</td><td>1</td><td>Benign   </td></tr>
+	<tr><td>1018561</td><td> 2</td><td> 1</td><td> 2</td><td> 1</td><td>2</td><td> 1.000000</td><td>3</td><td> 1</td><td>1</td><td>Benign   </td></tr>
+	<tr><td>1033078</td><td> 2</td><td> 1</td><td> 1</td><td> 1</td><td>2</td><td> 1.000000</td><td>1</td><td> 1</td><td>5</td><td>Benign   </td></tr>
+	<tr><td>1033078</td><td> 4</td><td> 2</td><td> 1</td><td> 1</td><td>2</td><td> 1.000000</td><td>2</td><td> 1</td><td>1</td><td>Benign   </td></tr>
+	<tr><td>1035283</td><td> 1</td><td> 1</td><td> 1</td><td> 1</td><td>1</td><td> 1.000000</td><td>3</td><td> 1</td><td>1</td><td>Benign   </td></tr>
+	<tr><td>1036172</td><td> 2</td><td> 1</td><td> 1</td><td> 1</td><td>2</td><td> 1.000000</td><td>2</td><td> 1</td><td>1</td><td>Benign   </td></tr>
+	<tr><td>1041801</td><td> 5</td><td> 3</td><td> 3</td><td> 3</td><td>2</td><td> 3.000000</td><td>4</td><td> 4</td><td>1</td><td>Malignant</td></tr>
+	<tr><td>1043999</td><td> 1</td><td> 1</td><td> 1</td><td> 1</td><td>2</td><td> 3.000000</td><td>3</td><td> 1</td><td>1</td><td>Benign   </td></tr>
+	<tr><td>1044572</td><td> 8</td><td> 7</td><td> 5</td><td>10</td><td>7</td><td> 9.000000</td><td>5</td><td> 5</td><td>4</td><td>Malignant</td></tr>
+	<tr><td>1047630</td><td> 7</td><td> 4</td><td> 6</td><td> 4</td><td>6</td><td> 1.000000</td><td>4</td><td> 3</td><td>1</td><td>Malignant</td></tr>
+	<tr><td>1048672</td><td> 4</td><td> 1</td><td> 1</td><td> 1</td><td>2</td><td> 1.000000</td><td>2</td><td> 1</td><td>1</td><td>Benign   </td></tr>
+	<tr><td>1049815</td><td> 4</td><td> 1</td><td> 1</td><td> 1</td><td>2</td><td> 1.000000</td><td>3</td><td> 1</td><td>1</td><td>Benign   </td></tr>
+	<tr><td>1050670</td><td>10</td><td> 7</td><td> 7</td><td> 6</td><td>4</td><td>10.000000</td><td>4</td><td> 1</td><td>2</td><td>Malignant</td></tr>
+	<tr><td>1050718</td><td> 6</td><td> 1</td><td> 1</td><td> 1</td><td>2</td><td> 1.000000</td><td>3</td><td> 1</td><td>1</td><td>Benign   </td></tr>
+	<tr><td>1054590</td><td> 7</td><td> 3</td><td> 2</td><td>10</td><td>5</td><td>10.000000</td><td>5</td><td> 4</td><td>4</td><td>Malignant</td></tr>
+	<tr><td>1054593</td><td>10</td><td> 5</td><td> 5</td><td> 3</td><td>6</td><td> 7.000000</td><td>7</td><td>10</td><td>1</td><td>Malignant</td></tr>
+	<tr><td>1056784</td><td> 3</td><td> 1</td><td> 1</td><td> 1</td><td>2</td><td> 1.000000</td><td>2</td><td> 1</td><td>1</td><td>Benign   </td></tr>
+	<tr><td>1057013</td><td> 8</td><td> 4</td><td> 5</td><td> 1</td><td>2</td><td> 3.740196</td><td>7</td><td> 3</td><td>1</td><td>Malignant</td></tr>
+	<tr><td>1059552</td><td> 1</td><td> 1</td><td> 1</td><td> 1</td><td>2</td><td> 1.000000</td><td>3</td><td> 1</td><td>1</td><td>Benign   </td></tr>
+	<tr><td>1065726</td><td> 5</td><td> 2</td><td> 3</td><td> 4</td><td>2</td><td> 7.000000</td><td>3</td><td> 6</td><td>1</td><td>Malignant</td></tr>
+	<tr><td>1066373</td><td> 3</td><td> 2</td><td> 1</td><td> 1</td><td>1</td><td> 1.000000</td><td>2</td><td> 1</td><td>1</td><td>Benign   </td></tr>
+	<tr><td>1066979</td><td> 5</td><td> 1</td><td> 1</td><td> 1</td><td>2</td><td> 1.000000</td><td>2</td><td> 1</td><td>1</td><td>Benign   </td></tr>
+	<tr><td>1067444</td><td> 2</td><td> 1</td><td> 1</td><td> 1</td><td>2</td><td> 1.000000</td><td>2</td><td> 1</td><td>1</td><td>Benign   </td></tr>
+	<tr><td>1070935</td><td> 1</td><td> 1</td><td> 3</td><td> 1</td><td>2</td><td> 1.000000</td><td>1</td><td> 1</td><td>1</td><td>Benign   </td></tr>
+	<tr><td>⋮</td><td>⋮</td><td>⋮</td><td>⋮</td><td>⋮</td><td>⋮</td><td>⋮</td><td>⋮</td><td>⋮</td><td>⋮</td><td>⋮</td></tr>
+	<tr><td>1350423</td><td> 5</td><td>10</td><td>10</td><td> 8</td><td>5</td><td> 5</td><td> 7</td><td>10</td><td>1</td><td>Malignant</td></tr>
+	<tr><td>1352848</td><td> 3</td><td>10</td><td> 7</td><td> 8</td><td>5</td><td> 8</td><td> 7</td><td> 4</td><td>1</td><td>Malignant</td></tr>
+	<tr><td>1353092</td><td> 3</td><td> 2</td><td> 1</td><td> 2</td><td>2</td><td> 1</td><td> 3</td><td> 1</td><td>1</td><td>Benign   </td></tr>
+	<tr><td>1354840</td><td> 2</td><td> 1</td><td> 1</td><td> 1</td><td>2</td><td> 1</td><td> 3</td><td> 1</td><td>1</td><td>Benign   </td></tr>
+	<tr><td>1354840</td><td> 5</td><td> 3</td><td> 2</td><td> 1</td><td>3</td><td> 1</td><td> 1</td><td> 1</td><td>1</td><td>Benign   </td></tr>
+	<tr><td>1355260</td><td> 1</td><td> 1</td><td> 1</td><td> 1</td><td>2</td><td> 1</td><td> 2</td><td> 1</td><td>1</td><td>Benign   </td></tr>
+	<tr><td>1365075</td><td> 4</td><td> 1</td><td> 4</td><td> 1</td><td>2</td><td> 1</td><td> 1</td><td> 1</td><td>1</td><td>Benign   </td></tr>
+	<tr><td>1365328</td><td> 1</td><td> 1</td><td> 2</td><td> 1</td><td>2</td><td> 1</td><td> 2</td><td> 1</td><td>1</td><td>Benign   </td></tr>
+	<tr><td>1368267</td><td> 5</td><td> 1</td><td> 1</td><td> 1</td><td>2</td><td> 1</td><td> 1</td><td> 1</td><td>1</td><td>Benign   </td></tr>
+	<tr><td>1368273</td><td> 1</td><td> 1</td><td> 1</td><td> 1</td><td>2</td><td> 1</td><td> 1</td><td> 1</td><td>1</td><td>Benign   </td></tr>
+	<tr><td>1368882</td><td> 2</td><td> 1</td><td> 1</td><td> 1</td><td>2</td><td> 1</td><td> 1</td><td> 1</td><td>1</td><td>Benign   </td></tr>
+	<tr><td>1369821</td><td>10</td><td>10</td><td>10</td><td>10</td><td>5</td><td>10</td><td>10</td><td>10</td><td>7</td><td>Malignant</td></tr>
+	<tr><td>1371026</td><td> 5</td><td>10</td><td>10</td><td>10</td><td>4</td><td>10</td><td> 5</td><td> 6</td><td>3</td><td>Malignant</td></tr>
+	<tr><td>1371920</td><td> 5</td><td> 1</td><td> 1</td><td> 1</td><td>2</td><td> 1</td><td> 3</td><td> 2</td><td>1</td><td>Benign   </td></tr>
+	<tr><td> 466906</td><td> 1</td><td> 1</td><td> 1</td><td> 1</td><td>2</td><td> 1</td><td> 1</td><td> 1</td><td>1</td><td>Benign   </td></tr>
+	<tr><td> 466906</td><td> 1</td><td> 1</td><td> 1</td><td> 1</td><td>2</td><td> 1</td><td> 1</td><td> 1</td><td>1</td><td>Benign   </td></tr>
+	<tr><td> 534555</td><td> 1</td><td> 1</td><td> 1</td><td> 1</td><td>2</td><td> 1</td><td> 1</td><td> 1</td><td>1</td><td>Benign   </td></tr>
+	<tr><td> 536708</td><td> 1</td><td> 1</td><td> 1</td><td> 1</td><td>2</td><td> 1</td><td> 1</td><td> 1</td><td>1</td><td>Benign   </td></tr>
+	<tr><td> 566346</td><td> 3</td><td> 1</td><td> 1</td><td> 1</td><td>2</td><td> 1</td><td> 2</td><td> 3</td><td>1</td><td>Benign   </td></tr>
+	<tr><td> 603148</td><td> 4</td><td> 1</td><td> 1</td><td> 1</td><td>2</td><td> 1</td><td> 1</td><td> 1</td><td>1</td><td>Benign   </td></tr>
+	<tr><td> 654546</td><td> 1</td><td> 1</td><td> 1</td><td> 1</td><td>2</td><td> 1</td><td> 1</td><td> 1</td><td>8</td><td>Benign   </td></tr>
+	<tr><td> 654546</td><td> 1</td><td> 1</td><td> 1</td><td> 3</td><td>2</td><td> 1</td><td> 1</td><td> 1</td><td>1</td><td>Benign   </td></tr>
+	<tr><td> 695091</td><td> 5</td><td>10</td><td>10</td><td> 5</td><td>4</td><td> 5</td><td> 4</td><td> 4</td><td>1</td><td>Malignant</td></tr>
+	<tr><td> 714039</td><td> 3</td><td> 1</td><td> 1</td><td> 1</td><td>2</td><td> 1</td><td> 1</td><td> 1</td><td>1</td><td>Benign   </td></tr>
+	<tr><td> 763235</td><td> 3</td><td> 1</td><td> 1</td><td> 1</td><td>2</td><td> 1</td><td> 2</td><td> 1</td><td>2</td><td>Benign   </td></tr>
+	<tr><td> 776715</td><td> 3</td><td> 1</td><td> 1</td><td> 1</td><td>3</td><td> 2</td><td> 1</td><td> 1</td><td>1</td><td>Benign   </td></tr>
+	<tr><td> 841769</td><td> 2</td><td> 1</td><td> 1</td><td> 1</td><td>2</td><td> 1</td><td> 1</td><td> 1</td><td>1</td><td>Benign   </td></tr>
+	<tr><td> 888820</td><td> 5</td><td>10</td><td>10</td><td> 3</td><td>7</td><td> 3</td><td> 8</td><td>10</td><td>2</td><td>Malignant</td></tr>
+	<tr><td> 897471</td><td> 4</td><td> 8</td><td> 6</td><td> 4</td><td>3</td><td> 4</td><td>10</td><td> 6</td><td>1</td><td>Malignant</td></tr>
+	<tr><td> 897471</td><td> 4</td><td> 8</td><td> 8</td><td> 5</td><td>4</td><td> 5</td><td>10</td><td> 4</td><td>1</td><td>Malignant</td></tr>
 </tbody>
 </table>
 
@@ -14693,72 +15747,55 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 
 </div>
 
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Question 13.1</p>
-<p>For each of the following distributions, give an example of data that you would expect to follow this distribution (besides the examples already discussed in class).
-a.  Binomial<br>
-b.  Geometric<br>
-c.  Poisson<br>
-d.  Exponential<br>
-e.  Weibull</p>
-<hr>
-<p>Solution:</p>
-<ul>
-<li>Binomial: probability of rolling a dice and getting the number 6 in a given number of trials.</li>
-<li>Geometric: related to above, probability of the number of times a dice is thrown until a 6 is gotten for the first time. </li>
-<li>Poisson: if normally a cafe sees 1 customer per minute on average, then the probability of 10 customers arriving all at once follows a Poisson distribution. </li>
-<li>Exponential: the amoun of time a car battery will last will follow a exponential distribution.</li>
-<li>Weibull: in contrast, how long will it take for my car battery to fail will then follow a Weibull distribution. </li>
-</ul>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-r"><pre><span></span><span class="c1"># Data with regression prediction impute</span>
+<span class="n">cancer_regression_df</span> <span class="o">&lt;-</span> <span class="nf">complete</span><span class="p">(</span><span class="n">regression_impute</span><span class="p">)</span>
+<span class="n">cancer_regression_df</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-r"><pre><span></span><span class="c1"># Data with pertubation impute</span>
+<span class="n">cancer_pert_df</span> <span class="o">&lt;-</span> <span class="nf">complete</span><span class="p">(</span><span class="n">pert_impute</span><span class="p">)</span>
+<span class="n">cancer_pert_df</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
 
 </div>
-</div>
-</div>
-</div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Question 13.2</p>
-<p>In this problem you, can simulate a simplified airport security system at a busy airport. Passengers arrive according to a Poisson distribution with λ1 = 5 per minute (i.e., mean interarrival rate 1 = 0.2 minutes) to the ID/boarding-pass check queue, where there are several servers who each have exponential service time with mean rate 2 = 0.75 minutes. [Hint: model them as one block that has more than one resource.]  After that, the passengers are assigned to the shortest of the several personal-check queues, where they go through the personal scanner (time is uniformly distributed between 0.5 minutes and 1 minute).</p>
-<p>Use the Arena software (PC users) or Python with SimPy (PC or Mac users) to build a simulation of the system, and then vary the number of ID/boarding-pass checkers and personal-check queues to determine how many are needed to keep average wait times below 15 minutes.  [If you’re using SimPy, or if you have access to a non-student version of Arena, you can use λ1 = 50 to simulate a busier airport.]</p>
+<hr>
+<p>Question 15.1</p>
+<p>Describe a situation or problem from your job, everyday life, current events, etc., for which optimization would be appropriate. What data would you need?</p>
 <hr>
 <p>Solution:</p>
-<p><em>Below is a few trials with different numbers of ID/boarding-pass-queues and personal-check-queues. Looks like <strong>3</strong> ID/boarding-pass-queues and <strong>2</strong> personal-check-queues will do the job at about 9 minutes on average.</em></p>
-<p>Solution below but code will be a different attachment.</p>
-<p>(base) C:\Users\ateje\OneDrive\Desktop\VS Code Projects&gt;C:/Users/ateje/anaconda3/python.exe "c:/Users/ateje/OneDrive/Desktop/VS Code Projects/Python-Projects/Airport_simulation.py"<br>
-Input # of ID_queues working: 1
-Input # of personal_check_queues working: 1
-Running simulation...
-The average wait time is 32 minutes and 46 seconds.</p>
-<p>(base) C:\Users\ateje\OneDrive\Desktop\VS Code Projects&gt;C:/Users/ateje/anaconda3/python.exe "c:/Users/ateje/OneDrive/Desktop/VS Code Projects/Python-Projects/Airport_simulation.py"<br>
-Input # of ID_queues working: 2
-Input # of personal_check_queues working: 2
-Running simulation...
-The average wait time is 21 minutes and 1 seconds.</p>
-<p>(base) C:\Users\ateje\OneDrive\Desktop\VS Code Projects&gt;C:/Users/ateje/anaconda3/python.exe "c:/Users/ateje/OneDrive/Desktop/VS Code Projects/Python-Projects/Airport_simulation.py"<br>
-Input # of ID_queues working: 3
-Input # of personal_check_queues working: 3
-Running simulation...
-The average wait time is 9 minutes and 17 seconds.</p>
-<p>(base) C:\Users\ateje\OneDrive\Desktop\VS Code Projects&gt;C:/Users/ateje/anaconda3/python.exe "c:/Users/ateje/OneDrive/Desktop/VS Code Projects/Python-Projects/Airport_simulation.py"<br>
-Input # of ID_queues working: 2
-Input # of personal_check_queues working: 3
-Running simulation...
-The average wait time is 21 minutes and 1 seconds.</p>
-<p><strong>(base) C:\Users\ateje\OneDrive\Desktop\VS Code Projects&gt;C:/Users/ateje/anaconda3/python.exe "c:/Users/ateje/OneDrive/Desktop/VS Code Projects/Python-Projects/Airport_simulation.py"<br>
-Input # of ID_queues working: 3
-Input # of personal_check_queues working: 2
-Running simulation...
-The average wait time is 9 minutes and 17 seconds.</strong></p>
+<p>Optimization can be used for airline to decide the number of first-class tickets, advantage tickets, and coach tickets they should sell to maximize their profits for their flights. The company might need to consider certain constraints like number of first class and coach seats available and the size of the staff to serve first class, etc.</p>
 
 </div>
 </div>
